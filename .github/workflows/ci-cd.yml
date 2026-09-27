@@ -1,0 +1,29 @@
+name: Library Management System CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Validate project files
+        run: |
+          test -f index.html
+          test -f books.html
+          test -f members.html
+          test -f style.css
+          test -f script.js
+          echo "All required project files are present."
+
+      - name: CI/CD validation successful
+        run: echo "Library Management System CI/CD pipeline completed successfully."
